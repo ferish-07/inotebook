@@ -7,14 +7,21 @@ import "./App.css";
 import SidemenuBar from "./components/SidemenuBar";
 import NewRouter from "./NewRouter";
 import Navbar from "./components/Navbar";
+import NoteState from "./context/notes/NoteState";
 
 const App = () => {
   const childRef = useRef();
 
   return (
-    <Router>
-      <NewRouter />
-    </Router>
+    <div>
+      <NoteState>
+        {/* usecontext is used here */}
+        <Router>
+          <Navbar />
+          <NewRouter />
+        </Router>
+      </NoteState>
+    </div>
   );
 };
 

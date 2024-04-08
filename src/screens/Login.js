@@ -5,7 +5,7 @@ export default function Login() {
   const navigate = useNavigate();
   return (
     <div>
-      <button onClick={() => navigate("/sidemenubar")}>Login</button>
+      <button onClick={() => navigate("/Sidemenubar")}>Login</button>
     </div>
   );
 }

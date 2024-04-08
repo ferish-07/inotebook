@@ -29,7 +29,7 @@ const SidemenuBar = () => {
     {
       title: "Home",
       isSelected: true,
-      navigate: "/",
+      navigate: "/Home",
     },
     {
       title: "About",
@@ -70,7 +70,7 @@ const SidemenuBar = () => {
                     i2.isSelected = false;
                   }
                 });
-
+                console.log("-------------------------", newData);
                 setListDrawer(newData);
                 navigate(i.navigate);
               }}

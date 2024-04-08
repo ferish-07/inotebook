@@ -1,14 +1,16 @@
 import React from "react";
 import "./Navbar.css";
 import draw from "../utils/images/drawerIcon.png";
+import { Link } from "react-router-dom";
 
 export default function Navbar({ toggleDrawer }) {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <text className="icon" onClick={() => toggleDrawer("left", true)}>
+        <text className="icon">
           <img src={draw} style={{ width: 25, height: 25 }} />
         </text>
+        <text>INoteBook</text>
         <button
           class="navbar-toggler"
           type="button"
@@ -23,26 +25,19 @@ export default function Navbar({ toggleDrawer }) {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">
-                Home <span class="sr-only">(current)</span>
-              </a>
+              <Link class="nav-link" to="/">
+                Home
+              </Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                Features
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Pricing
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">
-                Disabled
-              </a>
+              <Link class="nav-link" to="/About">
+                About
+              </Link>
             </li>
           </ul>
+        </div>
+        <div>
+          <text>Login</text>
         </div>
       </nav>
     </div>

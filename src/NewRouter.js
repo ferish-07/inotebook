@@ -9,10 +9,7 @@ export default function NewRouter() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/sidemenubar" element={<SidemenuBar />} />
-
-        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={<Home />} />
 
         <Route path="/About" element={<About />} />
       </Routes>
