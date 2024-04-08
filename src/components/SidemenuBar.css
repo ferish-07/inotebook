@@ -11,3 +11,29 @@
     background-color: white;
     padding: 10px;
 }
+.BoxContainerSelected{
+    background-color: #0d6efd;
+    border-radius: 10px;
+
+}
+.BoxContainer{
+    border-radius: 10px;
+}
+.BoxContainer:hover{
+    background-color:rgba(212, 204, 204, 0.606);
+}
+
+.ListItemStyleSelected{
+    color: white;
+}
+
+.ListItemStyle{
+    color: black;
+}
+.mainBox{
+    margin: 10px;
+}
+.listContainer{
+    margin-top: 10px;
+    /* background-color: antiquewhite; */
+}

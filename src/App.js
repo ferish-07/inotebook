@@ -6,13 +6,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import SidemenuBar from "./components/SidemenuBar";
 import NewRouter from "./NewRouter";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const childRef = useRef();
 
   return (
     <Router>
-      <SidemenuBar />
       <NewRouter />
     </Router>
   );

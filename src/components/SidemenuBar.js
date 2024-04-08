@@ -8,19 +8,35 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { useNavigate } from "react-router-dom";
 
 import "./SidemenuBar.css";
 import Home from "../screens/Home";
 import About from "../screens/About";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const SidemenuBar = () => {
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     top: false,
     left: false,
     bottom: false,
     right: false,
   });
+
+  const [ListDrawer, setListDrawer] = React.useState([
+    {
+      title: "Home",
+      isSelected: true,
+      navigate: "/",
+    },
+    {
+      title: "About",
+      isSelected: false,
+      navigate: "/About",
+    },
+  ]);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -29,7 +45,6 @@ const SidemenuBar = () => {
     ) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
 
@@ -39,54 +54,48 @@ const SidemenuBar = () => {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
+      className={"mainBox"}
     >
-      <List>
-        {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))} */}
+      <List className="listContainer">
+        {ListDrawer.map((i) => {
+          return (
+            <ListItem
+              disablePadding
+              onClick={() => {
+                let newData = ListDrawer;
+                newData.map((i2) => {
+                  if (i2.title == i.title) {
+                    i2.isSelected = true;
+                  } else {
+                    i2.isSelected = false;
+                  }
+                });
 
-        <ListItem disablePadding components={Link}>
-          {/* <Link to={"/"}> */}
-          <ListItemButton component={Link} to={"/"}>
-            <ListItemIcon></ListItemIcon>
-            <ListItemText primary={"Home"} />
-          </ListItemButton>
-          {/* </Link> */}
-        </ListItem>
-        <ListItem disablePadding components={Link}>
-          <ListItemButton component={Link}>
-            <ListItemIcon></ListItemIcon>
-            <ListItemText primary={"Aboutdad"} to={"/About"} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon></ListItemIcon>
-            <ListItemText primary={"Contact"} />
-          </ListItemButton>
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon></ListItemIcon>
-            <ListItemText primary={"inbox"} />
-          </ListItemButton>
-        </ListItem>
+                setListDrawer(newData);
+                navigate(i.navigate);
+              }}
+              className={
+                !i.isSelected ? "BoxContainer" : "BoxContainerSelected"
+              }
+            >
+              <ListItemButton>
+                <ListItemIcon></ListItemIcon>
+                <ListItemText
+                  primary={i.title}
+                  className={
+                    i.isSelected ? "ListItemStyleSelected" : "ListItemStyle "
+                  }
+                />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </Box>
   );
 
   return (
-    <div className="Navbar">
+    <div>
       {/* {['left', 'right', 'top', 'bottom'].map((anchor) => (
                 <React.Fragment key={anchor}>
                     <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
@@ -98,8 +107,7 @@ const SidemenuBar = () => {
                     </Drawer>
                 </React.Fragment>
             ))} */}
-
-      <button onClick={toggleDrawer("left", true)}>CLICK</button>
+      <Navbar toggleDrawer={toggleDrawer("left", true)} />
 
       <Drawer
         anchor={"left"}
