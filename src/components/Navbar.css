@@ -1,3 +1,7 @@
 .icon{
     cursor: pointer;
 }
+
+.title-style{
+    font-weight: bold;
+}

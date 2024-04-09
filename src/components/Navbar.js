@@ -9,10 +9,10 @@ export default function Navbar({ toggleDrawer }) {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <text className="icon" onClick={() => toggleDrawer("left", true)}>
+        <text className="icon mx-3" onClick={() => toggleDrawer("left", true)}>
           <img src={draw} style={{ width: 25, height: 25 }} />
         </text>
-        <text>INoteBook</text>
+        <text className="title-style">INoteBook</text>
         <button
           class="navbar-toggler"
           type="button"
@@ -24,7 +24,7 @@ export default function Navbar({ toggleDrawer }) {
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse mx-5" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
               <Link
