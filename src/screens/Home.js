@@ -1,27 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SidemenuBar from "../components/SidemenuBar";
+import draw from "../utils/images/drawerIcon.png";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import "./Home.css";
 
 export default function Home() {
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:4000/api/notes/getnotes", {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         token:
-  //           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYxMzg5NzMzYzAxNGUyMzBkMDc1YjM2In0sImlhdCI6MTcxMjU3MDY0OX0.imTRZJNluW084CDXAG-qQ9YVIPrIJIshVuDu4yFU-H8",
-  //       },
-  //     })
-  //     .then((response) => {
-  //       console.log("-=-RESPONS=", response);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, []);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/");
+    } else {
+      navigate("/Login");
+    }
+  }, []);
+
   return (
     <div>
-      <text>this is Home</text>
+      {localStorage.getItem("token") ? (
+        <>
+          <SidemenuBar />
+        </>
+      ) : null}
+      <div className="containers">
+        <text>DASHBOARD</text>
+      </div>
     </div>
   );
 }

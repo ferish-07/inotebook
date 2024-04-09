@@ -1,6 +1,6 @@
 // App.js
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import "./App.css";
@@ -17,7 +17,6 @@ const App = () => {
       <NoteState>
         {/* usecontext is used here */}
         <Router>
-          <Navbar />
           <NewRouter />
         </Router>
       </NoteState>

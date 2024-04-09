@@ -1,0 +1,22 @@
+.mainContainer{
+    display: flex;
+    height: 100vh;
+ 
+}
+
+.imageContainers{
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #e6f2ff;
+}
+
+.formContainer{
+    flex: 1;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background-color: white;
+        flex-direction: column;
+}

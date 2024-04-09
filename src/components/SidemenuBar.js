@@ -8,7 +8,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import "./SidemenuBar.css";
 import Home from "../screens/Home";
@@ -24,17 +24,22 @@ const SidemenuBar = () => {
     bottom: false,
     right: false,
   });
-
+  const location = useLocation();
   const [ListDrawer, setListDrawer] = React.useState([
     {
       title: "Home",
       isSelected: true,
-      navigate: "/Home",
+      navigate: "/",
     },
     {
       title: "About",
       isSelected: false,
       navigate: "/About",
+    },
+    {
+      title: "Add Notes",
+      isSelected: false,
+      navigate: "/AddNotes",
     },
   ]);
 
@@ -70,12 +75,13 @@ const SidemenuBar = () => {
                     i2.isSelected = false;
                   }
                 });
-                console.log("-------------------------", newData);
                 setListDrawer(newData);
                 navigate(i.navigate);
               }}
               className={
-                !i.isSelected ? "BoxContainer" : "BoxContainerSelected"
+                location.pathname === i.navigate
+                  ? "BoxContainerSelected"
+                  : "BoxContainer"
               }
             >
               <ListItemButton>
@@ -83,7 +89,9 @@ const SidemenuBar = () => {
                 <ListItemText
                   primary={i.title}
                   className={
-                    i.isSelected ? "ListItemStyleSelected" : "ListItemStyle "
+                    location.pathname === i.navigate
+                      ? "ListItemStyleSelected"
+                      : "ListItemStyle"
                   }
                 />
               </ListItemButton>
